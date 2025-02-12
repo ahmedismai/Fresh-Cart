@@ -1,27 +1,24 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: "/Fresh-Cart/", 
+  base: "/Fresh-Cart/", // اسم المستودع هنا
   build: {
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react')) return 'reactVendor';
-            if (id.includes('@tanstack/react-query') || id.includes('react-hot-toast')) return 'uiLibs';
-            return 'vendor';
-          }
+        manualChunks: {
+          reactVendor: ['react', 'react-dom', 'react-router-dom'],
+          uiLibs: ['@tanstack/react-query', 'react-hot-toast'],
         },
       },
     },
-    chunkSizeWarningLimit: 700, // ✅ رفع الحد الأقصى لحجم الملفات
-    minify: 'terser', 
+    chunkSizeWarningLimit: 700, 
+    minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true, // ✅ إزالة console.log
-        drop_debugger: true, // ✅ إزالة debugger
+        drop_console: true,
+        drop_debugger: true,
       },
     },
   },
