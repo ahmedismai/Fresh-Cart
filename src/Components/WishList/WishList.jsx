@@ -73,17 +73,19 @@ export default function Wishlist() {
                   </p>
                 </div>
                 <button
-                  type="button"
-                  aria-label="Remove from wishlist"
-                  onClick={() => {
-                    if (wishList.includes(product.id)) {
-                      removeFromWishList(product.id);
-                    }
-                  }}
-                  className="px-3 py-2 text-white bg-emerald-500 rounded-lg hover:bg-red-600 transition"
-                >
-                  Remove
-                </button>
+                    type="button"
+                    aria-label="Remove from wishlist"
+                    onClick={() => {
+                      if (wishList.includes(product.id)) {
+                        removeFromWishList(product.id);
+                      }
+                    }}
+                    className={`cursor-pointer font-medium text-emerald-500 ${
+                      wishList.includes(product.id) ? "text-red-500" : "text-gray-400"
+                    }`}
+                  >
+                    Remove
+                  </button>
               </div>
             ))}
           </div>
