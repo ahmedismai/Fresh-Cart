@@ -28,7 +28,7 @@ var settings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 7,
+  slidesToShow: 4,
   slidesToScroll: 2,
   autoplay:true,
   autoplaySpeed:1000,
@@ -36,11 +36,11 @@ var settings = {
 
   return (
     <>
-    <h2 className=' my-2 text-3xl '>Shop Popular Categories </h2>
+    <h2 className=' my-5 text-3xl '>Shop Popular Categories </h2>
         <Slider {...settings}>
-          {categorios.map((category)=><div key={category._id} >
-            <img src={category.image} className='w-full h-[200px] object-cover' alt="" />
-            <h4>{category.name}</h4>
+          {categorios.map((category)=><div className='text-center' key={category._id} >
+            <img src={category.image} className='w-full h-[100px] md:h-[300px] mb-4 object-cover' alt="" />
+            <h4 >{category.name}</h4>
           </div>)}
         </Slider>
     </>

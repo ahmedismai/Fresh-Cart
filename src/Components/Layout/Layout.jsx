@@ -10,7 +10,7 @@ export default function Layout() {
     <>
         <NavbarComponent />
 
-        <div className='container my-6 mb-10 py-20 lg:py-12 w-[85%] mx-auto'>
+        <div className='container mb-10 py-20 lg:py-12 w-[85%] mx-auto'>
           <Outlet/>
         </div>
         <Footer/>

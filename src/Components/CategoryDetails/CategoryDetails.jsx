@@ -104,7 +104,7 @@ export default function CategoryDetails() {
 
   return (
     <>
-      <div className="grid grid-cols-5 mb-10 ">
+      <div className="grid  grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mb-10 ">
         {relatedProducts?.length > 0 ? (
           relatedProducts?.map((product) => (
             <div key={product?.id} className="my-4 product mx-4   hover:shadow-lg hover:shadow-emerald-500 relative">

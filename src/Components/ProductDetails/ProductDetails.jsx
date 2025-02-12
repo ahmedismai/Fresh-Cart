@@ -164,7 +164,7 @@ export default function ProductDetails() {
         </div>
       </div>
 
-      <div className='grid grid-cols-6'>
+      <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6'>
         {relatedProducts.length > 0 ? relatedProducts?.map((product) => (
           <div key={product?.id} className='my-2 product p-2 relative'>
             <Link to={`/productdetails/${product?.id}/${product?.category?.name}`}>

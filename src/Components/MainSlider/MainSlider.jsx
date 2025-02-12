@@ -26,17 +26,17 @@ export default function MainSlider() {
   return (
     <>
         
-        <div className='flex flex-wrap items-center my-8'>
+        <div className='flex flex-wrap items-center my-0'>
             <div className='w-3/4'>
             <Slider {...settings}>
-              <img src={slade3} className='w-full h-[400px] object-cover' alt="" />
-              <img src={slade4} className='w-full h-[400px] object-cover' alt="" />
-              <img src={slade5} className='w-full h-[400px] object-cover' alt="" />
+              <img src={slade3} className='w-full h-[200px] md:h-[400px] object-cover' alt="" />
+              <img src={slade4} className='w-full h-[200px] md:h-[400px] object-cover' alt="" />
+              <img src={slade5} className='w-full h-[200px] md:h-[400px] object-cover' alt="" />
               </Slider>
             </div>
             <div className='w-1/4'>
-            <img src={slade3} className='w-full h-[200px]' alt="" />
-            <img src={slade2} className='w-full h-[200px]' alt="" />
+            <img src={slade3} className='w-full h-[100px] md:h-[200px]' alt="" />
+            <img src={slade2} className='w-full h-[100px] md:h-[200px]' alt="" />
 
             </div>
           </div>

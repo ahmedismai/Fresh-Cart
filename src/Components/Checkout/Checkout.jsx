@@ -15,7 +15,7 @@ export default function Checkout() {
       phone:"",
       city:"",
     },
-    onSubmit :()=> handleCheckout(cartId,"http://fresh-carts-nine.vercel.app/#")
+    onSubmit :()=> handleCheckout(cartId,"http://fresh-carts-nine.vercel.app")
   })
 
 
@@ -23,11 +23,6 @@ export default function Checkout() {
     let {data}= await Checkout(cartId,url,formik.values)
     window.location.href=data.session.url
   }
-
-
-
-
-  
 
   return (
     <>

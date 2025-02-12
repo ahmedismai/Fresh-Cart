@@ -48,72 +48,48 @@ export default function Wishlist() {
 
   return (
     <>
-    <h2 className="text-center text-emerald-500 text-3xl font-bold mb-8">My Wish List</h2>
+      <h2 className="text-center text-emerald-500 text-3xl font-bold mb-8">
+        My Wish List
+      </h2>
       {wishListDetails?.length > 0 && (
-        <>
-          
-
-          <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                  <th scope="col" className="px-16 py-3">
-                    <span>Image</span>
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Product
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Price
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {wishListDetails?.map((product) => (
-                  <tr
-                    key={product.id}
-                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
-                  >
-                    <td className="p-4">
-                      <img
-                        src={product.imageCover}
-                        className="w-16 md:w-32 max-w-full max-h-full"
-                        alt="Product"
-                      />
-                    </td>
-                    <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                      {product.title}
-                    </td>
-
-                    <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                      {product.price}
-                    </td>
-                    <td className="px-6 py-4">
-                      <span
-                        onClick={() => {
-                          if (wishList.includes(product.id)) {
-                            removeFromWishList(product.id);
-                          } 
-                        }}
-                        className={`cursor-pointer font-medium text-red-600 dark:text-red-500 ${wishList.includes(product.id) ? 'text-red-500' : 'text-gray-400'}`}
-                        
-                      >
-                        Remove
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <section className="relative overflow-x-auto shadow-md sm:rounded-lg ">
+          <div >
+            {wishListDetails?.map((product) => (
+              <div
+                key={product.id}
+                className="md:flex items-center md:justify-between p-4 bg-white rounded-lg shadow-lg border-b"
+              >
+                <img
+                  src={product.imageCover}
+                  className=" md:w-32 md:h-32 object-cover rounded-lg"
+                  alt="Product"
+                />
+                <div className="flex-1 px-4 ">
+                  <h3 className="font-semibold text-gray-900 dark:text-white pb-5">
+                    {product.title}
+                  </h3>
+                  <p className="text-gray-500 dark:text-gray-300 pb-5">
+                    ${product.price}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  aria-label="Remove from wishlist"
+                  onClick={() => {
+                    if (wishList.includes(product.id)) {
+                      removeFromWishList(product.id);
+                    }
+                  }}
+                  className="px-3 py-2 text-white bg-emerald-500 rounded-lg hover:bg-red-600 transition"
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
           </div>
-         
-        </>
-      )  
-        
-      }
+        </section>
+      )}
     </>
-  )
+  );
+  
 }

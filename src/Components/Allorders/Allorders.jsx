@@ -72,7 +72,7 @@ export default function AllOrders() {
       ) : orders.length === 0 ? (
         <p className="text-center mt-4">🚀 No orders available</p>
       ) : (
-        <div className="overflow-x-auto shadow-md rounded-lg mb-5 ">
+        <div className="omd:verflow-x-auto shadow-md rounded-lg mb-5 ">
           <table className="w-full table-auto border-collapse text-center">
             <thead className="bg-gray-100 text-gray-700">
               <tr>
