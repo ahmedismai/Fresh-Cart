@@ -15,7 +15,7 @@ export default function Checkout() {
       phone:"",
       city:"",
     },
-    onSubmit :()=> handleCheckout(cartId,"https://fresh-carts-nine.vercel.app/#/allorders")
+    onSubmit :()=> handleCheckout(cartId,"https://fresh-carts-nine.vercel.app/")
   })
 
 
