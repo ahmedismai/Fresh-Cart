@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: "/Fresh-Cart/", // اسم المستودع هنا
+  base: "/Fresh-Cart/", // تأكد من أنه يطابق اسم المستودع بالضبط
   build: {
     rollupOptions: {
       output: {
@@ -23,3 +23,4 @@ export default defineConfig({
     },
   },
 });
+
