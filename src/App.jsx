@@ -49,7 +49,7 @@ function App() {
                   <Route path="products" element={<Products />} />
                   <Route path="wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
                   <Route path="checkout" element={<Checkout />} />
-                  <Route path="allorders" element={<Allorders />} />
+                  <Route path="/allorders" element={<Allorders />} />
                   <Route path="allorders/:id" element={<AllordersDetails />} />
                   <Route path="profile" element={<Profile />} />
                   <Route path="profile/change-password" element={<ChangePassword />} />
