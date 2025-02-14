@@ -29,7 +29,6 @@ import CategoryDetails from "./Components/CategoryDetails/CategoryDetails.jsx";
 import AllordersDetails from "./Components/AllordersDetails/AllordersDetails.jsx";
 import BrandDetails from "./Components/BrandDetails/BrandDetails.jsx";
 import UserContextProvider from "./Context/userContext.jsx";
-import OrderContaxtProvider from "./Context/ordercontaxt";
 
 let query = new QueryClient();
 
@@ -39,7 +38,6 @@ function App() {
       <UserContextProvider>
         <CartContextProvider>
           <WishListContextProvider>
-            <OrderContaxtProvider>
             <HashRouter> 
               <Routes>
                 <Route path="/" element={<Layout />}>
@@ -68,7 +66,6 @@ function App() {
               </Routes>
             </HashRouter>
             <Toaster />
-            </OrderContaxtProvider>
           </WishListContextProvider>
         </CartContextProvider>
       </UserContextProvider>

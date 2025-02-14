@@ -1,22 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-import { OrderContaxt } from '../../Context/ordercontaxt';
 
 export default function AllOrdersDetails() {
   let { id } = useParams();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  let {setDataId,dataId} =useContext(OrderContaxt)
+  
+  
 
-
-  async function GetOrdersByID(idData) {
+  async function GetOrdersByID() {
     setLoading(true);
     try {
       const response = await axios.get(`https://ecommerce.routemisr.com/api/v1/orders/user/${id}`);
-      let related = response.data.filter((order) => order.id === dataId);
-      setOrders(related); 
+      setOrders(response.data); 
       
     } catch (error) {
       setError("⚠️ An error occurred while loading orders.");
@@ -26,10 +24,12 @@ export default function AllOrdersDetails() {
   }
 
   useEffect(() => {
-    if (id) {
+    if (id ) {
+      
+      
       GetOrdersByID();
     }
-  }, [id,dataId]); 
+  }, [id]); 
 
   return (
     <>
@@ -49,7 +49,7 @@ export default function AllOrdersDetails() {
             <div key={order._id} className="border-b pb-5 mb-5 ">
               <div className='grid lg:grid-cols-3 gap-3 mb-8'>
                 {/* معلومات الطلب */}
-              <div className="py-4 px-2 bg-white shadow-md rounded-lg">
+              <div className="p-6 h-[150px] bg-white shadow-md rounded-lg">
                 <h2 className="text-lg font-semibold text-emerald-600">
                   Order ID: <span className="text-emerald-500">#{order.id}</span>
                 </h2>
@@ -67,7 +67,7 @@ export default function AllOrdersDetails() {
               </div>
 
               <div >
-              <div className="py-4 px-2 bg-white shadow-md rounded-lg">
+              <div className="p-6 h-[150px] bg-white shadow-md rounded-lg">
                   <h2 className="text-lg font-semibold text-emerald-600">Address Info</h2>
                   <p className="text-gray-700">
                     <span>Details:</span> {order.shippingAddress.details}
@@ -82,7 +82,7 @@ export default function AllOrdersDetails() {
               </div>
               {/* معلومات العنوان والعميل */}
               <div >
-                <div className="py-4 px-2  bg-white shadow-md rounded-lg">
+                <div className="p-6 h-[150px]  bg-white shadow-md rounded-lg">
                   <h2 className="text-lg font-semibold text-emerald-600">Customer Info</h2>
                   <p className="text-gray-700">
                     <span>Name:</span> {order.user.name}
