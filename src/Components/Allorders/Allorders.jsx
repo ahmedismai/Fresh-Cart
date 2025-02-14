@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { OrderContaxt } from '../../Context/ordercontaxt';
 
 export default function AllOrders() {
   const [userId, setUserId] = useState(null);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  let {setDataId,dataId} =useContext(OrderContaxt)
 
   useEffect(() => {
     async function verifyToken() {
@@ -41,8 +43,10 @@ export default function AllOrders() {
     fetchOrders();
   }, [userId]);
   let navigate=useNavigate()
-  
-  function Click(){
+
+
+  function Click(id){
+    setDataId(id)
     navigate(`/allorders/${userId}`)
   }
 
@@ -94,7 +98,7 @@ export default function AllOrders() {
                   {!order.isDelivered && <span className='text-white bg-red-600 px-2 rounded-md '>isDelivered</span>}
                   </div>
                   </td>
-                  <td className="px-4 py-2"><button onClick={()=>Click()} className='bg-emerald-500 rounded-md px-3 py-2 text-white'>View</button></td>
+                  <td className="px-4 py-2"><button onClick={()=>Click(order.id)} className='bg-emerald-500 rounded-md px-3 py-2 text-white'>View</button></td>
                 </tr>
               ))}
             </tbody>
