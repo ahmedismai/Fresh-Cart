@@ -29,6 +29,7 @@ import CategoryDetails from "./Components/CategoryDetails/CategoryDetails.jsx";
 import AllordersDetails from "./Components/AllordersDetails/AllordersDetails.jsx";
 import BrandDetails from "./Components/BrandDetails/BrandDetails.jsx";
 import UserContextProvider from "./Context/userContext.jsx";
+import HandleSign from "./Components/HandleSign/HandleSign";
 
 let query = new QueryClient();
 
@@ -48,19 +49,19 @@ function App() {
                   <Route path="brands/:name/:id" element={<BrandDetails />} />
                   <Route path="products" element={<Products />} />
                   <Route path="wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
-                  <Route path="checkout" element={<Checkout />} />
-                  <Route path="allorders" element={<Allorders />} />
-                  <Route path="allorders/:id" element={<AllordersDetails />} />
-                  <Route path="profile" element={<Profile />} />
-                  <Route path="profile/change-password" element={<ChangePassword />} />
-                  <Route path="profile/update" element={<Update />} />
+                  <Route path="checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+                  <Route path="allorders" element={<ProtectedRoute><Allorders /></ProtectedRoute>} />
+                  <Route path="allorders/:id" element={<ProtectedRoute><AllordersDetails /></ProtectedRoute>} />
+                  <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+                  <Route path="profile/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
+                  <Route path="profile/update" element={<ProtectedRoute><Update /></ProtectedRoute>} />
                   <Route path="productdetails/:id/:category" element={<ProductDetails />} />
                   <Route path="categories/:categories/:categoryId" element={<CategoryDetails />} />
-                  <Route path="forgetpassword" element={<ForgetPassword />} />
-                  <Route path="reset-password" element={<ResetPassword />} />
-                  <Route path="verify-code" element={<VerifyCode />} />
-                  <Route path="register" element={<Register />} />
-                  <Route path="login" element={<Login />} />
+                  <Route path="forgetpassword" element={<HandleSign><ForgetPassword /></HandleSign>} />
+                  <Route path="reset-password" element={<HandleSign><ResetPassword /></HandleSign>} />
+                  <Route path="verify-code" element={<HandleSign><VerifyCode /></HandleSign>} />
+                  <Route path="register" element={<HandleSign><Register /></HandleSign>} />
+                  <Route path="login" element={<HandleSign><Login /></HandleSign>} />
                   <Route path="*" element={<Notfound />} />
                 </Route>
               </Routes>
