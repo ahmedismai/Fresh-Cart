@@ -80,7 +80,7 @@ export default function Wishlist() {
                         removeFromWishList(product.id);
                       }
                     }}
-                    className={`cursor-pointer font-medium text-emerald-500 ${
+                    className={`cursor-pointer font-medium text-red-600 dark:text-red-500 ${
                       wishList.includes(product.id) ? "text-red-500" : "text-gray-400"
                     }`}
                   >

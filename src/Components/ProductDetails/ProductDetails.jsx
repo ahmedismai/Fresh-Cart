@@ -127,15 +127,15 @@ export default function ProductDetails() {
 
   return (
     <>
-      <div className='flex flex-wrap items-center mb-5'>
-        <div className='w-1/4'>
+      <div className='md:flex flex-wrap items-center mb-5'>
+        <div className='md:w-1/4'>
           <Slider {...settings}>
             {product?.images.map((src) => (
               <img src={src} alt='' className='w-full' key={src} />
             ))}
           </Slider>
         </div>
-        <div className='w-3/4 p-4'>
+        <div className='md:w-3/4 p-4'>
           <h3 className='font-semibold capitalize text-2xl'>{product?.title}</h3>
           <h4 className='text-gray-500 my-4'>{product?.description}</h4>
           <h4 className='text-gray-500 font-bold my-4'>{product?.category.name}</h4>
