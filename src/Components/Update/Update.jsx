@@ -64,7 +64,7 @@ function signout(){
 
   
 
-    <h1 className='text-emerald-600 p-5 font-bold text-3xl text-center mt-20 capitalize'>Change your password </h1>
+    <h1 className='text-emerald-600 p-5 font-bold text-3xl text-center mt-20 capitalize'>Change your Data </h1>
     <form onSubmit={formik.handleSubmit} className="max-w-md mx-auto">
       
       
