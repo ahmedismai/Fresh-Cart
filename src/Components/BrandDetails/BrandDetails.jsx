@@ -139,7 +139,7 @@ export default function BrandDetails() {
                   if (wishList?.includes(product?.id)) {
                     removeFromWishList(product?.id);
                   } else {
-                    addToWishList(product?.id);
+                    addTowishList(product?.id);
                   }
                 }else{
                   navi()
