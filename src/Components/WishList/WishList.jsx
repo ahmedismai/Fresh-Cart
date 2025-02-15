@@ -76,9 +76,7 @@ export default function Wishlist() {
                     type="button"
                     aria-label="Remove from wishlist"
                     onClick={() => {
-                      if (wishList.includes(product.id)) {
-                        removeFromWishList(product.id);
-                      }
+                        removeFromWishList(product?.id);
                     }}
                     className={`cursor-pointer font-medium text-red-600 dark:text-red-500 ${
                       wishList.includes(product.id) ? "text-red-500" : "text-gray-400"

@@ -110,7 +110,7 @@ export default function AllOrdersDetails() {
                   <tbody>
                     {order.cartItems.map((item, index) => (
                       <tr key={`${order._id}-${index}`} className="border-b hover:bg-gray-50">
-                        <td className="py-2 flex justify-center items-center">
+                        <td className="py-2 flex justify-center items-center ">
                           <Link
                             className="flex justify-center items-center"
                             to={`/productdetails/${item.product._id}/${item.product.category.name}`}
@@ -118,7 +118,7 @@ export default function AllOrdersDetails() {
                             <img
                               src={item?.product?.imageCover}
                               alt={item?.product?.title}
-                              className="w-16 h-16 object-cover rounded-lg"
+                              className="w-16 h-16 object-cover rounded-lg "
                             />
                             <span className="ml-2">{item?.product?.category?.name}</span>
                           </Link>
