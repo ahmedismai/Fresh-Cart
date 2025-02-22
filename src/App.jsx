@@ -58,7 +58,7 @@ function App() {
                   <Route path="productdetails/:id/:category" element={<ProductDetails />} />
                   <Route path="categories/:categories/:categoryId" element={<CategoryDetails />} />
                   <Route path="forgetpassword" element={<ForgetPassword />} />
-                  <Route path="reset-password" element={<HandleSign><ResetPassword /></HandleSign>} />
+                  <Route path="reset-passowrd" element={<HandleSign><ResetPassword /></HandleSign>} />
                   <Route path="verify-code" element={<HandleSign><VerifyCode /></HandleSign>} />
                   <Route path="register" element={<HandleSign><Register /></HandleSign>} />
                   <Route path="login" element={<HandleSign><Login /></HandleSign>} />
