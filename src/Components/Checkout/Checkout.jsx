@@ -15,7 +15,7 @@ export default function Checkout() {
       phone:"",
       city:"",
     },
-    onSubmit :()=> handleCheckout(cartId,window.location.origin)
+    onSubmit :()=> handleCheckout(cartId,`${window.location.origin}/allorders`)
   })
 
 
