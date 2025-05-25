@@ -1,30 +1,38 @@
-// src/router.jsx
-import { createBrowserRouter } from "react-router-dom";
-import Layout from "./Components/Layout/Layout";
-import Home from "./Components/Home/Home";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./App.css";
 import Categories from "./Components/Categories/Categories";
+import Login from "./Components/Login/Login";
+import Register from "./Components/Register/Register";
+import Products from "./Components/Products/Products";
 import Cart from "./Components/Cart/Cart";
 import Brands from "./Components/Brands/Brands";
-import BrandDetails from "./Components/BrandDetails/BrandDetails";
-import Products from "./Components/Products/Products";
-import Wishlist from "./Components/WishList/WishList";
-import Checkout from "./Components/Checkout/Checkout";
-import Allorders from "./Components/Allorders/Allorders";
-import AllordersDetails from "./Components/AllordersDetails/AllordersDetails";
-import Profile from "./Components/Profile/Profile";
-import ChangePassword from "./Components/ChangePassword/ChangePassword";
-import Update from "./Components/Update/Update";
-import ProductDetails from "./Components/ProductDetails/ProductDetails";
-import CategoryDetails from "./Components/CategoryDetails/CategoryDetails";
-import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
-import ResetPassword from "./Components/ResetPassword/ResetPassword";
-import VerifyCode from "./Components/VerifyCode/VerifyCode";
-import Register from "./Components/Register/Register";
-import Login from "./Components/Login/Login";
+import Home from "./Components/Home/Home";
+import Layout from "./Components/Layout/Layout";
 import Notfound from "./Components/Notfound/Notfound";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import ProductDetails from "./Components/ProductDetails/ProductDetails";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import CartContextProvider from "./Context/cartContext";
+import { Toaster } from "react-hot-toast";
+import Checkout from "./Components/Checkout/Checkout";
+import Allorders from "./Components/Allorders/Allorders";
+import WishListContextProvider from "./Context/wishListContext";
+import Wishlist from "./Components/WishList/WishList";
+import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
+import VerifyCode from "./Components/VerifyCode/VerifyCode";
+import ResetPassword from "./Components/ResetPassword/ResetPassword";
+import Profile from "./Components/Profile/Profile";
+import Update from "./Components/Update/Update";
+import ChangePassword from "./Components/ChangePassword/ChangePassword";
+import CategoryDetails from "./Components/CategoryDetails/CategoryDetails";
+import AllordersDetails from "./Components/AllordersDetails/AllordersDetails";
+import BrandDetails from "./Components/BrandDetails/BrandDetails";
+import UserContextProvider from "./Context/userContext";
 
-export const router = createBrowserRouter([
+const query = new QueryClient();
+
+const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
@@ -53,3 +61,21 @@ export const router = createBrowserRouter([
     ]
   }
 ]);
+
+function App() {
+  return (
+    <QueryClientProvider client={query}>
+      <UserContextProvider>
+        <CartContextProvider>
+          <WishListContextProvider>
+            <RouterProvider router={router} />
+            <Toaster />
+          </WishListContextProvider>
+        </CartContextProvider>
+      </UserContextProvider>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
+  );
+}
+
+export default App;
