@@ -30,7 +30,7 @@ import AllordersDetails from "./Components/AllordersDetails/AllordersDetails";
 import BrandDetails from "./Components/BrandDetails/BrandDetails";
 import UserContextProvider from "./Context/userContext";
 
-const query = new QueryClient();
+const reactQuery=new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <QueryClientProvider client={query}>
+    <QueryClientProvider client={reactQuery}>
       <UserContextProvider>
         <CartContextProvider>
           <WishListContextProvider>
