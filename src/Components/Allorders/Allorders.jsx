@@ -30,7 +30,6 @@ export default function AllOrders() {
       try {
         const response = await axios.get(`https://ecommerce.routemisr.com/api/v1/orders/user/${userId}`);
         setOrders(response.data);
-        console.log(response.data)
       } catch (err) {
         setError("⚠️ An error occurred while loading orders.");
       } finally {
