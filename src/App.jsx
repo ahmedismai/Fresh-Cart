@@ -1,78 +1,55 @@
-import { HashRouter, Routes, Route } from "react-router-dom"; // ✅ استخدم HashRouter
-import "./App.css";
-import Categories from "./Components/Categories/Categories.jsx";
-import Login from "./Components/Login/Login.jsx";
-import Register from "./Components/Register/Register.jsx";
-import Products from "./Components/Products/Products.jsx";
-import Cart from "./Components/Cart/Cart.jsx";
-import Brands from "./Components/Brands/Brands.jsx";
-import Home from "./Components/Home/Home.jsx";
-import Layout from "./Components/Layout/Layout.jsx";
-import Notfound from "./Components/Notfound/Notfound.jsx";
-import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute.jsx";
-import ProductDetails from "./Components/ProductDetails/ProductDetails.jsx";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import CartContextProvider from "./Context/cartContext.jsx";
-import { Toaster } from "react-hot-toast";
-import Checkout from "./Components/Checkout/Checkout.jsx";
-import Allorders from "./Components/Allorders/Allorders.jsx";
-import WishListContextProvider from "./Context/wishListContext.jsx";
-import Wishlist from "./Components/WishList/WishList.jsx";
-import ForgetPassword from "./Components/ForgetPassword/ForgetPassword.jsx";
-import VerifyCode from "./Components/VerifyCode/VerifyCode.jsx";
-import ResetPassword from "./Components/ResetPassword/ResetPassword.jsx";
-import Profile from "./Components/Profile/Profile.jsx";
-import Update from "./Components/Update/Update.jsx";
-import ChangePassword from "./Components/ChangePassword/ChangePassword.jsx";
-import CategoryDetails from "./Components/CategoryDetails/CategoryDetails.jsx";
-import AllordersDetails from "./Components/AllordersDetails/AllordersDetails.jsx";
-import BrandDetails from "./Components/BrandDetails/BrandDetails.jsx";
-import UserContextProvider from "./Context/userContext.jsx";
-import HandleSign from "./Components/HandleSign/HandleSign";
+// src/router.jsx
+import { createBrowserRouter } from "react-router-dom";
+import Layout from "./Components/Layout/Layout";
+import Home from "./Components/Home/Home";
+import Categories from "./Components/Categories/Categories";
+import Cart from "./Components/Cart/Cart";
+import Brands from "./Components/Brands/Brands";
+import BrandDetails from "./Components/BrandDetails/BrandDetails";
+import Products from "./Components/Products/Products";
+import Wishlist from "./Components/WishList/WishList";
+import Checkout from "./Components/Checkout/Checkout";
+import Allorders from "./Components/Allorders/Allorders";
+import AllordersDetails from "./Components/AllordersDetails/AllordersDetails";
+import Profile from "./Components/Profile/Profile";
+import ChangePassword from "./Components/ChangePassword/ChangePassword";
+import Update from "./Components/Update/Update";
+import ProductDetails from "./Components/ProductDetails/ProductDetails";
+import CategoryDetails from "./Components/CategoryDetails/CategoryDetails";
+import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
+import ResetPassword from "./Components/ResetPassword/ResetPassword";
+import VerifyCode from "./Components/VerifyCode/VerifyCode";
+import Register from "./Components/Register/Register";
+import Login from "./Components/Login/Login";
+import Notfound from "./Components/Notfound/Notfound";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 
-let query = new QueryClient();
-
-function App() {
-  return (
-    <QueryClientProvider client={query}>
-      <UserContextProvider>
-        <CartContextProvider>
-          <WishListContextProvider>
-            <HashRouter> 
-              <Routes>
-                <Route path="/" element={<Layout />}>
-                  <Route index element={<Home />} />
-                  <Route path="categories" element={<Categories />} />
-                  <Route path="cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
-                  <Route path="brands" element={<Brands />} />
-                  <Route path="brands/:name/:id" element={<BrandDetails />} />
-                  <Route path="products" element={<Products />} />
-                  <Route path="wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
-                  <Route path="checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
-                  <Route path="allorders" element={<ProtectedRoute><Allorders /></ProtectedRoute>} />
-                  <Route path="allorders/:id" element={<ProtectedRoute><AllordersDetails /></ProtectedRoute>} />
-                  <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-                  <Route path="profile/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
-                  <Route path="profile/update" element={<ProtectedRoute><Update /></ProtectedRoute>} />
-                  <Route path="productdetails/:id/:category" element={<ProductDetails />} />
-                  <Route path="categories/:categories/:categoryId" element={<CategoryDetails />} />
-                  <Route path="forgetpassword" element={<ForgetPassword />} />
-                  <Route path="reset-passowrd" element={<HandleSign><ResetPassword /></HandleSign>} />
-                  <Route path="verify-code" element={<HandleSign><VerifyCode /></HandleSign>} />
-                  <Route path="register" element={<HandleSign><Register /></HandleSign>} />
-                  <Route path="login" element={<HandleSign><Login /></HandleSign>} />
-                  <Route path="*" element={<Notfound />} />
-                </Route>
-              </Routes>
-            </HashRouter>
-            <Toaster />
-          </WishListContextProvider>
-        </CartContextProvider>
-      </UserContextProvider>
-      <ReactQueryDevtools />
-    </QueryClientProvider>
-  );
-}
-
-export default App;
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "categories", element: <Categories /> },
+      { path: "cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
+      { path: "brands", element: <Brands /> },
+      { path: "brands/:name/:id", element: <BrandDetails /> },
+      { path: "products", element: <Products /> },
+      { path: "wishlist", element: <ProtectedRoute><Wishlist /></ProtectedRoute> },
+      { path: "checkout", element: <Checkout /> },
+      { path: "allorders", element: <Allorders /> },
+      { path: "allorders/:id", element: <AllordersDetails /> },
+      { path: "profile", element: <Profile /> },
+      { path: "profile/change-password", element: <ChangePassword /> },
+      { path: "profile/update", element: <Update /> },
+      { path: "productdetails/:id/:category", element: <ProductDetails /> },
+      { path: "categories/:categories/:categoryId", element: <CategoryDetails /> },
+      { path: "forgetpassword", element: <ForgetPassword /> },
+      { path: "reset-password", element: <ResetPassword /> },
+      { path: "verify-code", element: <VerifyCode /> },
+      { path: "register", element: <Register /> },
+      { path: "login", element: <Login /> },
+      { path: "*", element: <Notfound /> },
+    ]
+  }
+]);
